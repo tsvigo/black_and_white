@@ -15,18 +15,21 @@ Dialog::Dialog(QWidget *parent)
     ui->setupUi(this);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
      //   QString myString;
-    const int len = 2832, strings =2480;
+    const int len = 2832, strings =357;
     const char ch = '\n';
     char mass[len][strings];
     
-    ifstream fs("/home/viktor/my_projects_qt_2/kartinki_iz_shriftov/fonts-sort", ios::in | ios::binary);
+    ifstream fs("/home/viktor/my_projects_qt_2/paketnoe_masshtabirovanie_kartinok/spisok.txt"
+  //  "/home/viktor/my_projects_qt_2/kartinki_iz_shriftov/fonts-sort"
+    , ios::in | ios::binary); // список названий шрифтов
  // действие
    //  std::cout<<"тест"<< std::endl;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-              QString comanda1="convert \"/home/viktor/my_projects_qt_2/kartinki_iz_shriftov/papka-fonts-sort/obrez_snizu/polniy_obrez/";
+              QString comanda1="convert \"/mnt/97d838cf-b3a1-4c1d-9c9d-cf745cf3116a/загрузки/imageye2/vihod/";
           QString font;
-    QString comanda3=".bmp\" -threshold 50%  \"/home/viktor/my_projects_qt_2/kartinki_iz_shriftov/papka-fonts-sort/obrez_snizu/polniy_obrez/black-white/";
+    QString comanda3=
+    ".bmp\" -threshold 50%  \"/mnt/97d838cf-b3a1-4c1d-9c9d-cf745cf3116a/загрузки/imageye2/vihod/black-white/";
           QString comanda4=".bmp\"";
         
         
@@ -40,7 +43,7 @@ Dialog::Dialog(QWidget *parent)
 
         font=mass[r];
 
-         comanda_vsia=comanda1+font+comanda3+font+comanda4;
+         comanda_vsia=comanda1+QString::number(r)+comanda3+QString::number(r)+comanda4;
          system (comanda_vsia.toStdString().c_str() );
 
 
